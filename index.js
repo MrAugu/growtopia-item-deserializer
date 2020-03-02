@@ -17,9 +17,7 @@ zlib.unzip(bin, (err, inflatedBinary) => {
   if (err) throw err;
   bin = inflatedBinary;
   if (bin !== inflatedBinary) throw new Error("Reading binary is not same with decompressed binary.");
-});
-
-const SerializationTime = Date.now();
+  const SerializationTime = Date.now();
 const itemDatVersion = bin.readIntLE(readingPosition, 2);
 readingPosition += 2;
 console.log(`Items.dat Version: ` + itemDatVersion);
@@ -276,3 +274,4 @@ const FileTime = Date.now();
 fs.writeFileSync("data.json", JSON.stringify(json, null, 4));
 const FileTimeEnd = Date.now();
 console.log(`File written in ${FileTimeEnd - FileTime}ms.`);
+});
